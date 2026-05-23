@@ -10,6 +10,7 @@ const config: Config = {
   collectCoverageFrom: ['**/*.(t|j)s'],
   coverageDirectory: '../coverage',
   testEnvironment: 'node',
+  setupFiles: ['dotenv/config'],
   moduleNameMapper: {
     '^@auth/(.*)$': '<rootDir>/auth/$1',
     '^@categories/(.*)$': '<rootDir>/categories/$1',

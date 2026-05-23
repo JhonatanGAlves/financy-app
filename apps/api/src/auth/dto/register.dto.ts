@@ -1,0 +1,10 @@
+import { createZodDto } from 'nestjs-zod'
+import { z } from 'zod'
+
+const RegisterSchema = z.object({
+  name: z.string().min(1).max(100),
+  email: z.string().email(),
+  password: z.string().min(6),
+})
+
+export class RegisterInput extends createZodDto(RegisterSchema) {}
