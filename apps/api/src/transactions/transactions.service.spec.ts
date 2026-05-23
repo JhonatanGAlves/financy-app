@@ -3,6 +3,7 @@ import { Test } from '@nestjs/testing'
 
 import { PrismaService } from '@prisma-module/prisma.service'
 
+import { TransactionType } from './dto/transaction.dto'
 import { TransactionsService } from './transactions.service'
 
 const mockPrisma = {
@@ -21,7 +22,7 @@ const transaction = {
   id: transactionId,
   amount: 100,
   description: 'Salary',
-  type: 'INCOME',
+  type: TransactionType.INCOME,
   categoryId: 'cat-1',
   userId,
   date: new Date(),
@@ -58,7 +59,7 @@ describe('TransactionsService', () => {
     const result = await service.create(userId, {
       amount: 100,
       description: 'Salary',
-      type: 'INCOME',
+      type: TransactionType.INCOME,
       categoryId: 'cat-1',
       date: new Date(),
     })

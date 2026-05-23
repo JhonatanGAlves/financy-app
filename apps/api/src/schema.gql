@@ -1,0 +1,90 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AuthResponse {
+  accessToken: String!
+}
+
+type CategoryObject {
+  createdAt: DateTime!
+  id: ID!
+  name: String!
+  updatedAt: DateTime!
+  userId: String!
+}
+
+input CreateCategoryInput {
+  name: String!
+}
+
+input CreateTransactionInput {
+  amount: Float!
+  categoryId: String!
+  date: DateTime!
+  description: String!
+  type: TransactionType!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  createCategory(input: CreateCategoryInput!): CategoryObject!
+  createTransaction(input: CreateTransactionInput!): TransactionObject!
+  deleteCategory(id: ID!): Boolean!
+  deleteTransaction(id: ID!): Boolean!
+  login(input: LoginInput!): AuthResponse!
+  register(input: RegisterInput!): AuthResponse!
+  updateCategory(input: UpdateCategoryInput!): CategoryObject!
+  updateTransaction(input: UpdateTransactionInput!): TransactionObject!
+}
+
+type Query {
+  categories: [CategoryObject!]!
+  transactions: [TransactionObject!]!
+}
+
+input RegisterInput {
+  email: String!
+  name: String!
+  password: String!
+}
+
+type TransactionObject {
+  amount: Float!
+  categoryId: String!
+  createdAt: DateTime!
+  date: DateTime!
+  description: String!
+  id: ID!
+  type: TransactionType!
+  updatedAt: DateTime!
+  userId: String!
+}
+
+enum TransactionType {
+  EXPENSE
+  INCOME
+}
+
+input UpdateCategoryInput {
+  id: ID!
+  name: String!
+}
+
+input UpdateTransactionInput {
+  amount: Float
+  categoryId: String
+  date: DateTime
+  description: String
+  id: ID!
+  type: TransactionType
+}

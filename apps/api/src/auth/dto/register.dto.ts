@@ -1,3 +1,5 @@
+import { Field, InputType } from '@nestjs/graphql'
+
 import { createZodDto } from 'nestjs-zod'
 import { z } from 'zod'
 
@@ -7,4 +9,14 @@ const RegisterSchema = z.object({
   password: z.string().min(6),
 })
 
-export class RegisterInput extends createZodDto(RegisterSchema) {}
+@InputType()
+export class RegisterInput extends createZodDto(RegisterSchema) {
+  @Field()
+  name!: string
+
+  @Field()
+  email!: string
+
+  @Field()
+  password!: string
+}

@@ -9,12 +9,17 @@ import { CategoriesModule } from '@categories/categories.module'
 import { PrismaModule } from '@prisma-module/prisma.module'
 import { TransactionsModule } from '@transactions/transactions.module'
 
+const isDev = process.env.NODE_ENV !== 'production'
+
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
+      introspection: isDev,
+      csrfPrevention: !isDev,
+      playground: false,
     }),
     PrismaModule,
     AuthModule,

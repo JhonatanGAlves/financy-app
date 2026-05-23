@@ -1,3 +1,5 @@
+import { Field, ID, InputType } from '@nestjs/graphql'
+
 import { createZodDto } from 'nestjs-zod'
 import { z } from 'zod'
 
@@ -6,4 +8,11 @@ const UpdateCategorySchema = z.object({
   name: z.string().min(1).max(100),
 })
 
-export class UpdateCategoryInput extends createZodDto(UpdateCategorySchema) {}
+@InputType()
+export class UpdateCategoryInput extends createZodDto(UpdateCategorySchema) {
+  @Field(() => ID)
+  id!: string
+
+  @Field()
+  name!: string
+}
