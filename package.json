@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "api": "pnpm --filter api dev"
+    "api": "pnpm --filter api dev",
+    "frontend": "pnpm --filter frontend dev"
   },
   "packageManager": "pnpm@10.18.1",
   "pnpm": {
