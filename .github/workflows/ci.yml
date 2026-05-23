@@ -3,13 +3,13 @@ name: CI
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  ci:
+  api:
+    name: API
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: apps/api
 
     steps:
       - uses: actions/checkout@v4
@@ -20,16 +20,15 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
-          cache-dependency-path: apps/api/pnpm-lock.yaml
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Type check
-        run: pnpm tsc --noEmit
+        run: pnpm --filter api tsc --noEmit
 
       - name: Lint
-        run: pnpm lint
+        run: pnpm --filter api lint
 
       - name: Test
-        run: pnpm test
+        run: pnpm --filter api test
