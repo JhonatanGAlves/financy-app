@@ -8,18 +8,18 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES2021",
     "sourceMap": true,
+    "rootDir": "./src",
     "outDir": "./dist",
-    "baseUrl": "./src",
     "strict": true,
     "skipLibCheck": true,
     "incremental": true,
     "paths": {
-      "@auth/*": ["auth/*"],
-      "@categories/*": ["categories/*"],
-      "@transactions/*": ["transactions/*"],
-      "@prisma-module/*": ["prisma/*"],
-      "@common/*": ["common/*"],
-      "@config/*": ["config/*"]
+      "@auth/*": ["./src/auth/*"],
+      "@categories/*": ["./src/categories/*"],
+      "@transactions/*": ["./src/transactions/*"],
+      "@prisma-module/*": ["./src/prisma/*"],
+      "@common/*": ["./src/common/*"],
+      "@config/*": ["./src/config/*"]
     }
   },
   "include": ["src/**/*"],

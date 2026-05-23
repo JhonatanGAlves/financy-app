@@ -1,5 +1,6 @@
-import { ZodValidationPipe } from 'nestjs-zod'
 import { NestFactory } from '@nestjs/core'
+
+import { ZodValidationPipe } from 'nestjs-zod'
 
 import { AppModule } from './app.module'
 import './config/env'
