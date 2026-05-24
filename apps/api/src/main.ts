@@ -8,6 +8,7 @@ import './config/env'
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   app.useGlobalPipes(new ZodValidationPipe())
+  app.enableCors({ origin: '*' })
   await app.listen(3000)
 }
 
