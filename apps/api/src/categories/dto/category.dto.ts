@@ -8,6 +8,15 @@ export class CategoryObject {
   @Field()
   name!: string
 
+  @Field({ nullable: true })
+  description?: string
+
+  @Field()
+  icon!: string
+
+  @Field()
+  color!: string
+
   @Field()
   userId!: string
 

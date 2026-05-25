@@ -7,7 +7,10 @@ type AuthResponse {
 }
 
 type CategoryObject {
+  color: String!
   createdAt: DateTime!
+  description: String
+  icon: String!
   id: ID!
   name: String!
   updatedAt: DateTime!
@@ -15,6 +18,9 @@ type CategoryObject {
 }
 
 input CreateCategoryInput {
+  color: String!
+  description: String
+  icon: String!
   name: String!
 }
 
@@ -76,6 +82,9 @@ enum TransactionType {
 }
 
 input UpdateCategoryInput {
+  color: String!
+  description: String
+  icon: String!
   id: ID!
   name: String!
 }

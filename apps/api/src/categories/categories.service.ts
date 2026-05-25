@@ -18,14 +18,27 @@ export class CategoriesService {
   }
 
   create(userId: string, input: CreateCategoryInput) {
-    return this.prisma.category.create({ data: { name: input.name, userId } })
+    return this.prisma.category.create({
+      data: {
+        name: input.name,
+        description: input.description,
+        icon: input.icon,
+        color: input.color,
+        userId,
+      },
+    })
   }
 
   async update(userId: string, input: UpdateCategoryInput) {
     await this.assertOwnership(input.id, userId)
     return this.prisma.category.update({
       where: { id: input.id },
-      data: { name: input.name },
+      data: {
+        name: input.name,
+        description: input.description,
+        icon: input.icon,
+        color: input.color,
+      },
     })
   }
 
