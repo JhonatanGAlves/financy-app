@@ -6,6 +6,7 @@ import { LoginPage } from '@/pages/auth/login'
 import { RegisterPage } from '@/pages/auth/register'
 import { CategoriesPage } from '@/pages/dashboard/categories'
 import { DashboardLayout } from '@/pages/dashboard/layout'
+import { TransactionsPage } from '@/pages/dashboard/transactions'
 
 function App() {
   const { isAuthenticated } = useAuth()
@@ -34,10 +35,7 @@ function App() {
           element={<div className="text-gray-800">Dashboard (em breve)</div>}
         />
         <Route path="/categories" element={<CategoriesPage />} />
-        <Route
-          path="/transactions"
-          element={<div className="text-gray-800">Transações (em breve)</div>}
-        />
+        <Route path="/transactions" element={<TransactionsPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
