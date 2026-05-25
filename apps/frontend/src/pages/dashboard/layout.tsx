@@ -1,8 +1,17 @@
-import { Menu, User, X } from 'lucide-react'
+import { useQuery } from '@apollo/client/react'
+import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 
 import { Logo } from '@/components/logo'
+import { GET_ME } from '@/graphql/queries/me'
+import type { User } from '@/types/user'
+
+function getInitials(name: string) {
+  const parts = name.trim().split(/\s+/)
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase()
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+}
 
 const NAV_LINKS = [
   { to: '/', label: 'Dashboard', end: true },
@@ -12,6 +21,9 @@ const NAV_LINKS = [
 
 function DashboardLayout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const navigate = useNavigate()
+  const { data } = useQuery<{ me: User }>(GET_ME)
+  const initials = data?.me ? getInitials(data.me.name) : '?'
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -36,9 +48,15 @@ function DashboardLayout() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <div className="size-9 rounded-full bg-gray-200 flex items-center justify-center">
-              <User className="size-4 text-gray-600" />
-            </div>
+            <button
+              onClick={() => navigate('/profile')}
+              className="size-9 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer hover:bg-gray-300 transition-colors"
+              aria-label="Perfil"
+            >
+              <span className="text-xs font-semibold text-gray-600">
+                {initials}
+              </span>
+            </button>
 
             {/* Hamburger — mobile only */}
             <button

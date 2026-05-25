@@ -7,6 +7,7 @@ import { RegisterPage } from '@/pages/auth/register'
 import { CategoriesPage } from '@/pages/dashboard/categories'
 import { DashboardPage } from '@/pages/dashboard'
 import { DashboardLayout } from '@/pages/dashboard/layout'
+import { ProfilePage } from '@/pages/dashboard/profile'
 import { TransactionsPage } from '@/pages/dashboard/transactions'
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/" element={<DashboardPage />} />
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/transactions" element={<TransactionsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
