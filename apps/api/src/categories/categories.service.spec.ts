@@ -51,7 +51,7 @@ describe('CategoriesService', () => {
 
   it('create returns new category', async () => {
     mockPrisma.category.create.mockResolvedValue(category)
-    const result = await service.create(userId, { name: 'Food' })
+    const result = await service.create(userId, { name: 'Food', icon: 'briefcase-business', color: 'green' })
     expect(result).toEqual(category)
   })
 
@@ -65,6 +65,8 @@ describe('CategoriesService', () => {
       const result = await service.update(userId, {
         id: categoryId,
         name: 'Groceries',
+        icon: 'briefcase-business',
+        color: 'green',
       })
       expect(result.name).toBe('Groceries')
     })
@@ -72,7 +74,7 @@ describe('CategoriesService', () => {
     it('throws NotFoundException when category does not exist', async () => {
       mockPrisma.category.findUnique.mockResolvedValue(null)
       await expect(
-        service.update(userId, { id: categoryId, name: 'X' }),
+        service.update(userId, { id: categoryId, name: 'X', icon: 'briefcase-business', color: 'green' }),
       ).rejects.toThrow(NotFoundException)
     })
 
@@ -82,7 +84,7 @@ describe('CategoriesService', () => {
         userId: 'other-user',
       })
       await expect(
-        service.update(userId, { id: categoryId, name: 'X' }),
+        service.update(userId, { id: categoryId, name: 'X', icon: 'briefcase-business', color: 'green' }),
       ).rejects.toThrow(ForbiddenException)
     })
   })
