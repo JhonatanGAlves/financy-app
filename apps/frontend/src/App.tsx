@@ -5,6 +5,7 @@ import { useAuth } from '@/hooks/use-auth'
 import { LoginPage } from '@/pages/auth/login'
 import { RegisterPage } from '@/pages/auth/register'
 import { CategoriesPage } from '@/pages/dashboard/categories'
+import { DashboardPage } from '@/pages/dashboard'
 import { DashboardLayout } from '@/pages/dashboard/layout'
 import { TransactionsPage } from '@/pages/dashboard/transactions'
 
@@ -30,10 +31,7 @@ function App() {
           </AuthGuard>
         }
       >
-        <Route
-          path="/"
-          element={<div className="text-gray-800">Dashboard (em breve)</div>}
-        />
+        <Route path="/" element={<DashboardPage />} />
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/transactions" element={<TransactionsPage />} />
       </Route>
