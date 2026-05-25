@@ -20,7 +20,8 @@
       "@transactions/*": ["./src/transactions/*"],
       "@prisma-module/*": ["./src/prisma/*"],
       "@common/*": ["./src/common/*"],
-      "@config/*": ["./src/config/*"]
+      "@config/*": ["./src/config/*"],
+      "@users/*": ["./src/users/*"]
     }
   },
   "include": ["src/**/*"],

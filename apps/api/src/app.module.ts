@@ -4,6 +4,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { Module } from '@nestjs/common'
 import { GraphQLModule } from '@nestjs/graphql'
 
+import { UsersModule } from '@users/users.module'
+
 import { AuthModule } from '@auth/auth.module'
 import { CategoriesModule } from '@categories/categories.module'
 import { PrismaModule } from '@prisma-module/prisma.module'
@@ -25,6 +27,7 @@ const isDev = process.env.NODE_ENV !== 'production'
     AuthModule,
     CategoriesModule,
     TransactionsModule,
+    UsersModule,
   ],
 })
 export class AppModule {}
