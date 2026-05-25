@@ -84,7 +84,7 @@ function CategoriesPage() {
         </div>
         <button
           onClick={handleNewCategory}
-          className="flex items-center gap-2 px-4 py-2.5 bg-brand-base text-white text-sm font-semibold rounded-lg hover:bg-brand-dark transition-colors self-start sm:self-auto cursor-pointer"
+          className="flex items-center gap-2 px-4 py-2.5 bg-brand-base text-white text-sm font-medium rounded-lg hover:bg-brand-dark transition-colors self-start sm:self-auto cursor-pointer"
         >
           <Plus className="size-4" />
           Nova categoria
@@ -129,7 +129,7 @@ function CategoriesPage() {
             <Tag className="size-5 text-gray-400 mt-[6px]" />
           )}
           <div>
-            <p className="text-2xl font-bold text-gray-800 truncate max-w-[140px]">
+            <p className="text-2xl font-bold text-gray-800">
               {mostUsedCategory?.name ?? '—'}
             </p>
             <p className="text-xs font-medium text-gray-500 uppercase tracking-wide mt-0.5">
