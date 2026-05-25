@@ -50,11 +50,13 @@ type Mutation {
   login(input: LoginInput!): AuthResponse!
   register(input: RegisterInput!): AuthResponse!
   updateCategory(input: UpdateCategoryInput!): CategoryObject!
+  updateProfile(input: UpdateProfileInput!): UserObject!
   updateTransaction(input: UpdateTransactionInput!): TransactionObject!
 }
 
 type Query {
   categories: [CategoryObject!]!
+  me: UserObject!
   transactions: [TransactionObject!]!
 }
 
@@ -89,6 +91,10 @@ input UpdateCategoryInput {
   name: String!
 }
 
+input UpdateProfileInput {
+  name: String!
+}
+
 input UpdateTransactionInput {
   amount: Float
   categoryId: String
@@ -96,4 +102,10 @@ input UpdateTransactionInput {
   description: String
   id: ID!
   type: TransactionType
+}
+
+type UserObject {
+  email: String!
+  id: ID!
+  name: String!
 }
