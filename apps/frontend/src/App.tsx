@@ -4,6 +4,8 @@ import { AuthGuard } from '@/components/auth-guard'
 import { useAuth } from '@/hooks/use-auth'
 import { LoginPage } from '@/pages/auth/login'
 import { RegisterPage } from '@/pages/auth/register'
+import { CategoriesPage } from '@/pages/dashboard/categories'
+import { DashboardLayout } from '@/pages/dashboard/layout'
 
 function App() {
   const { isAuthenticated } = useAuth()
@@ -21,13 +23,22 @@ function App() {
         }
       />
       <Route
-        path="/"
         element={
           <AuthGuard>
-            <div className="p-8 text-gray-800">Dashboard (em breve)</div>
+            <DashboardLayout />
           </AuthGuard>
         }
-      />
+      >
+        <Route
+          path="/"
+          element={<div className="text-gray-800">Dashboard (em breve)</div>}
+        />
+        <Route path="/categories" element={<CategoriesPage />} />
+        <Route
+          path="/transactions"
+          element={<div className="text-gray-800">Transações (em breve)</div>}
+        />
+      </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
