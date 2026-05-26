@@ -15,6 +15,7 @@ import type { Category } from '@/types/category'
 import type { Transaction } from '@/types/transaction'
 import { getCategoryIcon } from '@/utils/category-icons'
 import { getCategoryPalette } from '@/utils/category-palette'
+
 import { TransactionFormDialog } from './transactions/transaction-form-dialog'
 
 function formatCurrency(value: number) {

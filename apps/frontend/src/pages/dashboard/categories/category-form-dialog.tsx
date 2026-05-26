@@ -15,8 +15,8 @@ import {
 import { CREATE_CATEGORY, UPDATE_CATEGORY } from '@/graphql/mutations/categories'
 import { GET_CATEGORIES } from '@/graphql/queries/categories'
 import type { Category } from '@/types/category'
-import { COLOR_NAMES, getCategoryPalette } from '@/utils/category-palette'
 import { getCategoryIcon, ICON_NAMES } from '@/utils/category-icons'
+import { COLOR_NAMES, getCategoryPalette } from '@/utils/category-palette'
 
 const DEFAULT_ICON = 'briefcase-business'
 const DEFAULT_COLOR = 'green'

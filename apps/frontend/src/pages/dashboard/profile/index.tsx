@@ -7,9 +7,9 @@ import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 
-import { useAuth } from '@/hooks/use-auth'
 import { UPDATE_PROFILE } from '@/graphql/mutations/users'
 import { GET_ME } from '@/graphql/queries/me'
+import { useAuth } from '@/hooks/use-auth'
 import type { User as UserType } from '@/types/user'
 
 const profileSchema = z.object({
