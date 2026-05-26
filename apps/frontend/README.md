@@ -77,14 +77,14 @@ src/
 
 ## Pages
 
-| Route | Description |
-|-------|-------------|
-| `/login` | Login |
-| `/register` | Sign up |
-| `/` | Dashboard with financial summary |
+| Route           | Description                        |
+| --------------- | ---------------------------------- |
+| `/login`        | Login                              |
+| `/register`     | Sign up                            |
+| `/`             | Dashboard with financial summary   |
 | `/transactions` | Transaction listing and management |
-| `/categories` | Category listing and management |
-| `/profile` | User profile |
+| `/categories`   | Category listing and management    |
+| `/profile`      | User profile                       |
 
 ## Environment Variables
 
