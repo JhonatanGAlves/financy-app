@@ -6,11 +6,7 @@ A full-stack personal finance management application. Track your income and expe
 
 ## Demo
 
-> 📹 Video demo coming soon — replace this section with your recording.
-
-<!--
-[![Watch the demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
--->
+https://github.com/user-attachments/assets/56f884e2-d84a-4d4c-b4fd-3096a9a349ef
 
 ---
 
