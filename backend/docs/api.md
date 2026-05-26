@@ -21,10 +21,10 @@ GraphQL API for personal finance management.
 pnpm install
 
 # 2. Copy env file and fill in the values
-cp apps/api/.env.example apps/api/.env
+cp backend/.env.example backend/.env
 
 # 3. Start the database
-cd apps/api
+cd backend
 docker compose up -d
 
 # 4. Run migrations

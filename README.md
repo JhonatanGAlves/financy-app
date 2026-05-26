@@ -22,7 +22,7 @@ https://github.com/user-attachments/assets/56f884e2-d84a-4d4c-b4fd-3096a9a349ef
 
 ## Tech Stack
 
-### Backend (`apps/api`)
+### Backend (`backend`)
 
 | Layer      | Technology                             |
 | ---------- | -------------------------------------- |
@@ -36,7 +36,7 @@ https://github.com/user-attachments/assets/56f884e2-d84a-4d4c-b4fd-3096a9a349ef
 | Testing    | Jest                                   |
 | Language   | TypeScript 5.7                         |
 
-### Frontend (`apps/frontend`)
+### Frontend (`frontend`)
 
 | Layer          | Technology               |
 | -------------- | ------------------------ |
@@ -57,10 +57,9 @@ https://github.com/user-attachments/assets/56f884e2-d84a-4d4c-b4fd-3096a9a349ef
 
 ```
 financy-app/
-├── apps/
-│   ├── api/          # NestJS GraphQL backend
-│   └── frontend/     # React web interface
-├── package.json      # pnpm workspace root
+├── backend/      # NestJS GraphQL backend
+├── frontend/     # React web interface
+├── package.json  # pnpm workspace root
 └── pnpm-workspace.yaml
 ```
 
@@ -80,10 +79,10 @@ financy-app/
 pnpm install
 ```
 
-### 2. Configure the API
+### 2. Configure the backend
 
 ```bash
-cp apps/api/.env.example apps/api/.env
+cp backend/.env.example backend/.env
 ```
 
 Fill in the values:
@@ -96,7 +95,7 @@ Fill in the values:
 
 ### 3. Configure the frontend
 
-Create `apps/frontend/.env`:
+Create `frontend/.env`:
 
 ```env
 VITE_BACKEND_URL=http://localhost:3000
@@ -105,7 +104,7 @@ VITE_BACKEND_URL=http://localhost:3000
 ### 4. Start the database
 
 ```bash
-cd apps/api
+cd backend
 docker compose up -d
 ```
 
@@ -122,8 +121,8 @@ pnpm prisma:generate
 Open two terminals from the repo root:
 
 ```bash
-# Terminal 1 — API (http://localhost:3000/graphql)
-pnpm api
+# Terminal 1 — Backend (http://localhost:3000/graphql)
+pnpm backend
 
 # Terminal 2 — Frontend (http://localhost:5173)
 pnpm frontend
@@ -150,7 +149,7 @@ Protected operations require the header:
 Authorization: Bearer <accessToken>
 ```
 
-Tokens are returned by `register` / `login` and expire in **7 days**. See [`apps/api/README.md`](apps/api/README.md) for full operation details.
+Tokens are returned by `register` / `login` and expire in **7 days**. See [`backend/README.md`](backend/README.md) for full operation details.
 
 ---
 
@@ -173,12 +172,12 @@ Tokens are returned by `register` / `login` and expire in **7 days**. See [`apps
 
 | Script                 | Description                      |
 | ---------------------- | -------------------------------- |
-| `pnpm api`             | Start the API dev server         |
+| `pnpm backend`         | Start the backend dev server     |
 | `pnpm frontend`        | Start the frontend dev server    |
 | `pnpm prisma:migrate`  | Create and apply a new migration |
 | `pnpm prisma:generate` | Generate the Prisma client       |
 
-### API (`apps/api`)
+### Backend (`backend`)
 
 | Script          | Description                |
 | --------------- | -------------------------- |
@@ -188,7 +187,7 @@ Tokens are returned by `register` / `login` and expire in **7 days**. See [`apps
 | `pnpm test:cov` | Tests with coverage        |
 | `pnpm lint`     | Run ESLint                 |
 
-### Frontend (`apps/frontend`)
+### Frontend (`frontend`)
 
 | Script                         | Description      |
 | ------------------------------ | ---------------- |
@@ -201,5 +200,5 @@ Tokens are returned by `register` / `login` and expire in **7 days**. See [`apps
 
 ## Further Reading
 
-- [API Documentation](apps/api/README.md)
-- [Frontend Documentation](apps/frontend/README.md)
+- [Backend Documentation](backend/README.md)
+- [Frontend Documentation](frontend/README.md)

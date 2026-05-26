@@ -7,8 +7,8 @@ on:
     branches: [main]
 
 jobs:
-  api:
-    name: API
+  backend:
+    name: Backend
     runs-on: ubuntu-latest
 
     env:
@@ -29,16 +29,16 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Generate Prisma client
-        run: pnpm --filter api prisma:generate
+        run: pnpm --filter backend prisma:generate
 
       - name: Type check
-        run: pnpm --filter api tsc --noEmit
+        run: pnpm --filter backend tsc --noEmit
 
       - name: Lint
-        run: pnpm --filter api lint
+        run: pnpm --filter backend lint
 
       - name: Test
-        run: pnpm --filter api test
+        run: pnpm --filter backend test
 
   frontend:
     name: Frontend

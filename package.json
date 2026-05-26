@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "api": "pnpm --filter api dev",
-    "frontend": "pnpm --filter frontend dev"
+    "backend": "pnpm --filter backend dev",
+    "frontend": "pnpm --filter frontend dev",
+    "prisma:migrate": "pnpm --filter backend prisma:migrate",
+    "prisma:generate": "pnpm --filter backend prisma:generate"
   },
   "packageManager": "pnpm@10.18.1",
   "pnpm": {

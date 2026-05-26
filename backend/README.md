@@ -30,10 +30,10 @@ GraphQL API for personal finance management built with NestJS, Prisma and Postgr
 pnpm install
 
 # 2. Copy the env file and fill in the values
-cp apps/api/.env.example apps/api/.env
+cp backend/.env.example backend/.env
 
 # 3. Start the database
-cd apps/api
+cd backend
 docker compose up -d
 
 # 4. Run migrations
@@ -66,7 +66,7 @@ Copy `.env.example` to `.env` and fill in:
 
 ## Scripts
 
-Run from `apps/api/`:
+Run from `backend/`:
 
 | Script                 | Description                      |
 | ---------------------- | -------------------------------- |

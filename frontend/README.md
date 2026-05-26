@@ -19,7 +19,7 @@ Web interface for Financy, a personal finance management application.
 
 - Node.js 20+
 - pnpm 10+
-- Financy API running (see `apps/api`)
+- Financy API running (see `backend`)
 
 ## Installation
 
