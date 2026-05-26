@@ -1,73 +1,97 @@
-# React + TypeScript + Vite
+# Financy — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web interface for Financy, a personal finance management application.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** + **TypeScript**
+- **Vite** — bundler and dev server
+- **TailwindCSS v4** — utility-first styling
+- **Apollo Client v4** — GraphQL communication
+- **React Hook Form** + **Zod** — forms with validation
+- **React Router v7** — client-side routing
+- **shadcn/ui** with **Base UI** — UI components
+- **Lucide React** — icons
+- **react-hot-toast** — toast notifications
+- **Vitest** + **Testing Library** — testing
 
-## React Compiler
+## Prerequisites
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js 20+
+- pnpm 10+
+- Financy API running (see `apps/api`)
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+From the monorepo root:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Development server
+pnpm --filter frontend dev
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Production build
+pnpm --filter frontend build
+
+# Preview production build
+pnpm --filter frontend preview
+
+# Run tests
+pnpm --filter frontend test
+
+# Run tests in watch mode
+pnpm --filter frontend test:watch
+
+# Lint
+pnpm --filter frontend lint
+
+# Type check
+pnpm --filter frontend tsc -b --noEmit
 ```
+
+## Project Structure
+
+```
+src/
+├── components/       # Reusable components (UI, auth-guard, etc.)
+├── graphql/
+│   ├── mutations/    # GraphQL mutations
+│   └── queries/      # GraphQL queries
+├── hooks/            # Custom hooks (useAuth)
+├── lib/              # General utilities (cn)
+├── pages/
+│   ├── auth/         # Login and register
+│   └── dashboard/    # Authenticated pages
+│       ├── categories/
+│       ├── profile/
+│       └── transactions/
+├── test/             # Test setup
+├── types/            # Global TypeScript types
+└── utils/            # Utility functions (icons, palettes)
+```
+
+## Pages
+
+| Route | Description |
+|-------|-------------|
+| `/login` | Login |
+| `/register` | Sign up |
+| `/` | Dashboard with financial summary |
+| `/transactions` | Transaction listing and management |
+| `/categories` | Category listing and management |
+| `/profile` | User profile |
+
+## Environment Variables
+
+Create a `.env` file at the package root:
+
+```env
+VITE_API_URL=http://localhost:3000/graphql
+```
+
+> By default, Apollo Client points to `http://localhost:3000/graphql`.
