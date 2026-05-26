@@ -48,7 +48,7 @@ Protected operations require a Bearer token in the `Authorization` header:
 Authorization: Bearer <accessToken>
 ```
 
-The token is returned by `register` and `login`.
+The token is returned by `register` and `login` and expires in **7 days**.
 
 ---
 
@@ -94,8 +94,8 @@ mutation Register($input: RegisterInput!) {
 
 **Errors**
 
-| Code | Description |
-|------|-------------|
+| Code       | Description          |
+| ---------- | -------------------- |
 | `CONFLICT` | Email already in use |
 
 ---
@@ -137,9 +137,69 @@ mutation Login($input: LoginInput!) {
 
 **Errors**
 
-| Code | Description |
-|------|-------------|
+| Code           | Description         |
+| -------------- | ------------------- |
 | `UNAUTHORIZED` | Invalid credentials |
+
+---
+
+### Users
+
+> All user operations require authentication.
+
+#### `me` — query
+
+Returns the authenticated user's profile.
+
+```graphql
+query Me {
+  me {
+    id
+    name
+    email
+  }
+}
+```
+
+**Response**
+
+```json
+{
+  "data": {
+    "me": {
+      "id": "uuid",
+      "name": "John Doe",
+      "email": "john@example.com"
+    }
+  }
+}
+```
+
+---
+
+#### `updateProfile`
+
+Updates the authenticated user's name.
+
+```graphql
+mutation UpdateProfile($input: UpdateProfileInput!) {
+  updateProfile(input: $input) {
+    id
+    name
+    email
+  }
+}
+```
+
+**Variables**
+
+```json
+{
+  "input": {
+    "name": "John Smith"
+  }
+}
+```
 
 ---
 
@@ -156,6 +216,9 @@ query Categories {
   categories {
     id
     name
+    description
+    icon
+    color
     userId
     createdAt
     updatedAt
@@ -172,7 +235,9 @@ query Categories {
       {
         "id": "uuid",
         "name": "Food",
-        "userId": "uuid",
+        "description": null,
+        "icon": "briefcase",
+        "color": "green",
         "createdAt": "2026-01-01T00:00:00.000Z",
         "updatedAt": "2026-01-01T00:00:00.000Z"
       }
@@ -190,9 +255,10 @@ mutation CreateCategory($input: CreateCategoryInput!) {
   createCategory(input: $input) {
     id
     name
-    userId
+    description
+    icon
+    color
     createdAt
-    updatedAt
   }
 }
 ```
@@ -202,10 +268,20 @@ mutation CreateCategory($input: CreateCategoryInput!) {
 ```json
 {
   "input": {
-    "name": "Food"
+    "name": "Food",
+    "description": "Groceries and restaurants",
+    "icon": "utensils",
+    "color": "green"
   }
 }
 ```
+
+| Field         | Required | Default       |
+| ------------- | :------: | ------------- |
+| `name`        |    ✓     | —             |
+| `description` |    ✗     | `null`        |
+| `icon`        |    ✓     | `"briefcase"` |
+| `color`       |    ✓     | `"green"`     |
 
 ---
 
@@ -216,6 +292,9 @@ mutation UpdateCategory($input: UpdateCategoryInput!) {
   updateCategory(input: $input) {
     id
     name
+    description
+    icon
+    color
     updatedAt
   }
 }
@@ -227,16 +306,19 @@ mutation UpdateCategory($input: UpdateCategoryInput!) {
 {
   "input": {
     "id": "uuid",
-    "name": "Groceries"
+    "name": "Groceries",
+    "description": "Supermarket only",
+    "icon": "shopping-cart",
+    "color": "blue"
   }
 }
 ```
 
 **Errors**
 
-| Code | Description |
-|------|-------------|
-| `NOT_FOUND` | Category does not exist |
+| Code        | Description                      |
+| ----------- | -------------------------------- |
+| `NOT_FOUND` | Category does not exist          |
 | `FORBIDDEN` | Category belongs to another user |
 
 ---
@@ -261,9 +343,9 @@ mutation DeleteCategory($id: ID!) {
 
 **Errors**
 
-| Code | Description |
-|------|-------------|
-| `NOT_FOUND` | Category does not exist |
+| Code        | Description                      |
+| ----------- | -------------------------------- |
+| `NOT_FOUND` | Category does not exist          |
 | `FORBIDDEN` | Category belongs to another user |
 
 ---
@@ -382,9 +464,9 @@ mutation UpdateTransaction($input: UpdateTransactionInput!) {
 
 **Errors**
 
-| Code | Description |
-|------|-------------|
-| `NOT_FOUND` | Transaction does not exist |
+| Code        | Description                         |
+| ----------- | ----------------------------------- |
+| `NOT_FOUND` | Transaction does not exist          |
 | `FORBIDDEN` | Transaction belongs to another user |
 
 ---
@@ -409,9 +491,9 @@ mutation DeleteTransaction($id: ID!) {
 
 **Errors**
 
-| Code | Description |
-|------|-------------|
-| `NOT_FOUND` | Transaction does not exist |
+| Code        | Description                         |
+| ----------- | ----------------------------------- |
+| `NOT_FOUND` | Transaction does not exist          |
 | `FORBIDDEN` | Transaction belongs to another user |
 
 ---
