@@ -44,6 +44,9 @@ jobs:
     name: Frontend
     runs-on: ubuntu-latest
 
+    env:
+      VITE_BACKEND_URL: http://localhost:3000
+
     steps:
       - uses: actions/checkout@v4
 
