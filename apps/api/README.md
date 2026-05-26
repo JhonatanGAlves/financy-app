@@ -56,11 +56,11 @@ In development, **Apollo Sandbox** is served at that URL — open it in the brow
 
 Copy `.env.example` to `.env` and fill in:
 
-| Variable | Description |
-|----------|-------------|
-| `DATABASE_URL` | PostgreSQL connection string |
-| `JWT_SECRET` | Secret used to sign JWT tokens |
-| `NODE_ENV` | `development` or `production` |
+| Variable       | Description                    |
+| -------------- | ------------------------------ |
+| `DATABASE_URL` | PostgreSQL connection string   |
+| `JWT_SECRET`   | Secret used to sign JWT tokens |
+| `NODE_ENV`     | `development` or `production`  |
 
 ---
 
@@ -68,16 +68,16 @@ Copy `.env.example` to `.env` and fill in:
 
 Run from `apps/api/`:
 
-| Script | Description |
-|--------|-------------|
-| `pnpm dev` | Start dev server with hot reload |
-| `pnpm build` | Compile TypeScript |
-| `pnpm start` | Run compiled output |
-| `pnpm test` | Run unit tests |
-| `pnpm test:cov` | Run tests with coverage report |
-| `pnpm lint` | Run ESLint |
-| `pnpm prisma:migrate` | Create and apply a new migration |
-| `pnpm prisma:generate` | Generate Prisma client |
+| Script                 | Description                      |
+| ---------------------- | -------------------------------- |
+| `pnpm dev`             | Start dev server with hot reload |
+| `pnpm build`           | Compile TypeScript               |
+| `pnpm start`           | Run compiled output              |
+| `pnpm test`            | Run unit tests                   |
+| `pnpm test:cov`        | Run tests with coverage report   |
+| `pnpm lint`            | Run ESLint                       |
+| `pnpm prisma:migrate`  | Create and apply a new migration |
+| `pnpm prisma:generate` | Generate Prisma client           |
 
 ---
 
@@ -104,37 +104,37 @@ src/
 
 ### Authentication
 
-| Operation | Type | Auth required |
-|-----------|------|:---:|
-| `register` | Mutation | ✗ |
-| `login` | Mutation | ✗ |
+| Operation  | Type     | Auth required |
+| ---------- | -------- | :-----------: |
+| `register` | Mutation |       ✗       |
+| `login`    | Mutation |       ✗       |
 
 ### Users
 
-| Operation | Type | Auth required |
-|-----------|------|:---:|
-| `me` | Query | ✓ |
-| `updateProfile` | Mutation | ✓ |
+| Operation       | Type     | Auth required |
+| --------------- | -------- | :-----------: |
+| `me`            | Query    |       ✓       |
+| `updateProfile` | Mutation |       ✓       |
 
 ### Categories
 
-| Operation | Type | Auth required |
-|-----------|------|:---:|
-| `categories` | Query | ✓ |
-| `createCategory` | Mutation | ✓ |
-| `updateCategory` | Mutation | ✓ |
-| `deleteCategory` | Mutation | ✓ |
+| Operation        | Type     | Auth required |
+| ---------------- | -------- | :-----------: |
+| `categories`     | Query    |       ✓       |
+| `createCategory` | Mutation |       ✓       |
+| `updateCategory` | Mutation |       ✓       |
+| `deleteCategory` | Mutation |       ✓       |
 
 ### Transactions
 
-| Operation | Type | Auth required |
-|-----------|------|:---:|
-| `transactions` | Query | ✓ |
-| `createTransaction` | Mutation | ✓ |
-| `updateTransaction` | Mutation | ✓ |
-| `deleteTransaction` | Mutation | ✓ |
+| Operation           | Type     | Auth required |
+| ------------------- | -------- | :-----------: |
+| `transactions`      | Query    |       ✓       |
+| `createTransaction` | Mutation |       ✓       |
+| `updateTransaction` | Mutation |       ✓       |
+| `deleteTransaction` | Mutation |       ✓       |
 
-For full operation details, inputs, outputs and examples, see [`docs/api.md`](./docs/api.md).
+For full operation details, inputs, outputs and examples, see [`docs/api.md`](./).
 
 The auto-generated GraphQL schema is available at [`src/schema.gql`](./src/schema.gql).
 
